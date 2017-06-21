@@ -7,7 +7,7 @@ Para empezar voy a tener una clase denominada “Tetrómino”, la misma clase v
 -	Guardar las 7 figuras de los tetrominos
 -	Tener una variable de rotaciónActual enum
 -	Una función que devuelva arreglo del Tetrómino girado
--	
+
 Las piezas están definidas en un arreglo bidimensional de 4x4. 
 
 El arreglo bidimensional (para las piezas: cube,  I, L, espejoL, N, espejoN, y T) estaría lleno por: 0 representando espacios vacíos, 1 para pivote y 2 para bloques normales.
@@ -46,7 +46,7 @@ En cuanto al tablero, vamos a tener otra clase denominada “board”  que va a:
 -	Un método que chequee si un bloque esta vacío o no para poder luego detectar colisiones 
 -	También vamos a necesitar métodos de get para los bloques, porque tenemos que detectarlos en Pixeles
 -	Una función q devuelva un boolean que nos permita ver si el movimiento es posible o no utilizando los métodos anteriores para chequear colisiones
--	
+
 Iba a hacer en principio un tablero que solo DIBUJARA sobre la ventana del game o App, pero me pareció más fácil darle un poco más de utilidad al mismo y hacer que lleve en si un poco más de responsabilidad respecto a las piezas (con el chequeo de colisiones) 
 Podríamos crear una clase CreaVent/CreatesWind/ImputOutput (Entrada y salida de datos)  que crea la ventana, la limpia, actualiza la pantalla y toma los input con SDL, en esta podríamos tener un enum con colores y así es más fácil en main (o APP) crear un objeto de la misma. Tiene métodos que:
 -	Dibujan un rectángulo
