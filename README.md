@@ -55,6 +55,7 @@ Podríamos crear una clase CreaVent/CreatesWind/ImputOutput (Entrada y salida de
 -	Un actualizar pantalla
 -	Uno que inicia gráfico
 -	 Y uno que toma altura y ancho de pantalla
+
 Sugiero crear esta clase para a la creación de ventanas y los eventos  AISLARLOS de la lógica del juego. 
 
 Otra de las clases será nombrada GAME y tendrá todos los datos de board y Tetrómino (y de IO), y en ella ambas se relacionaran 
