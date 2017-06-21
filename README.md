@@ -48,6 +48,8 @@ En cuanto al tablero, vamos a tener otra clase denominada “board”  que va a:
 -	Una función q devuelva un boolean que nos permita ver si el movimiento es posible o no utilizando los métodos anteriores para chequear colisiones
 
 Iba a hacer en principio un tablero que solo DIBUJARA sobre la ventana del game o App, pero me pareció más fácil darle un poco más de utilidad al mismo y hacer que lleve en si un poco más de responsabilidad respecto a las piezas (con el chequeo de colisiones) 
+
+
 Podríamos crear una clase CreaVent/CreatesWind/ImputOutput (Entrada y salida de datos)  que crea la ventana, la limpia, actualiza la pantalla y toma los input con SDL, en esta podríamos tener un enum con colores y así es más fácil en main (o APP) crear un objeto de la misma. Tiene métodos que:
 -	Dibujan un rectángulo
 -	Limpian pantalla
