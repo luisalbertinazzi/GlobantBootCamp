@@ -14,13 +14,13 @@ For starters, there's going to be a class "Tetromino" which will do the followin
 
 Example for piece I:
 
-{0,0,2,0,0}   //0 is an empty tile
+{0,0,2,0}   //0 is an empty tile
 
-{0,0,2,0,0}   //2 is a common piece
+{0,0,2,0}   //2 is a common piece
 
-{0,0,1,0,0}   //1 is the PIVOTE
+{0,0,1,0}   //1 is the PIVOTE
 
-{0,0,2,0,0}
+{0,0,2,0}
 
 If there are 7 pieces, and 4 rotations for each one, and we're saving them in 4x4 arrays, we could use a 4-dimensional array 7x4x4x4
 
@@ -59,23 +59,23 @@ El arreglo bidimensional (para las piezas: cube,  I, L, espejoL, N, espejoN, y T
 
 Ejemplo para T:
 
-{0,0,0,0,0}
+{0,0,0,0}
 
-{0,0,2,0,0}
+{0,0,2,0}
 
-{0,0,1,2,0}
+{0,0,1,2}
 
-{0,0,2,0,0}
+{0,0,2,0}
 
 T rotada:
 
-{0,0,0,0,0}
+{0,0,0,0}
 
-{0,0,0,0,0}
+{0,0,0,0}
 
-{0,2,1,2,0}
+{0,2,1,2}
 
-{0,0,2,0,0}
+{0,0,2,0}
 
 
 La idea me surgió porque para hacer mapas he trabajado con este tipo de arreglos, además al dibujarlo en una hoja tuve la idea de almacenar cada uno de los tetrominos en un arreglo de 4 dimensiones. ¿Esto que quiere decir?  Con un simple arreglo de 7x4x4x4 se solucionó. Se entiende así: si hay 7 piezas, con 4 rotaciones que debemos mostrar y cada pieza se encasilla en un arreglo de 4x4 podemos guardarlas en un arreglo de 7x4x4x4.
@@ -123,8 +123,14 @@ o	Puede haber otro método que sea CREAR pieza, que llamemos para darle al punte
 -	Tal vez en vez de llamar a todo en App podríamos tener una función que llame a las que dibujan las piezas actual y siguiente además del tablero (?)
 -	Una variable con puntos que se acumulan si una línea es eliminada
 -	Una función que cambie el tiempo de espera para bajar la pieza cada 10 líneas eliminadas
+
+
 La clase App (o sea nuestro main) va a tener que dibujar cada imagen una y otra vez, antes de cada movimiento chequea si es posible o no además del check en la posición INICIAL para ver si el jugador perdió. Estas funciones están en game, por lo que solo incluimos esta clase
+
 La SDL nos permite tomar (de nuestra clase CrearVent) la ventana, y las teclas, entonces con un WHILE podemos decir que: “mientras no se apreté escape, el juego continua” 
+
 App debería también tomar el tiempo actual (en milisegundos), el comando en la librería es SDL_GetTicks();
+
 Un switch con los casos de las teclas presionadas (abajo, derecha e izquierda) debe hacer lo pertinente, acelerar la pieza, moverla.
+
 Para girar deberíamos poner otras teclas, como A y S, o G y H. La SDL nos va a permitir tomar la entrada de manera sencilla, por lo que solo deberíamos imprimir en el lugar la pieza girada en cada caso (todo dentro del switch para los eventos)
