@@ -1,51 +1,6 @@
 # GlobantBootCamp
-Tetris Project
-
-In this project I used the SDL2 library. I worked a little bit with it some time ago, and i had it already installed in my computer.
-For starters, there's going to be a class "Tetromino" which will do the following:
-
--Save the 7 tetrominos
-	
--There's going to a variable "enum actualRotation" which will tell me the rotation position in which the piece is
-
--The getter for the position in which the piece is facing will return an array(4x4) depending on  "actualRotation"
-
-	
-
-Example for piece I:
-
-{0,0,2,0}   //0 is an empty tile
-
-{0,0,2,0}   //2 is a common piece
-
-{0,0,1,0}   //1 is the PIVOTE
-
-{0,0,2,0}
-
-If there are 7 pieces, and 4 rotations for each one, and we're saving them in 4x4 arrays, we could use a 4-dimensional array 7x4x4x4
-
-On the other hand we've got the board. This class will do the following:
-
-- Have an array of 10x20 with all positiones filled with "free" (we can store an enum variable that has FREE and OCCUPIED )
-
-- this class will define the height and widht of the board and it's edges
-
-- There  will be a function that initializes the board on FREE
-
-- There's also going to be a function that STORE pieces depending on it's shape and changes the "FREE" value to "OCCUPIED" 
-
-- Have a function that asks if there's any piece that went above the board, so it can tell us if the game is over
-
-- Have a function that will DELETE a line in case is full of OCCUPIED and will make all cubes move down, we can make another function that  will run a loop in which it'll see which lines we need to "FREE".
-
-- There'll be a method that will checkif a tile is FREE or OCCUPIED
-
-- Have a function that will return true or false depending on if the movement we tried to do is possible or not (Collisions)
-
--posX and posY will be 2 variables which will tell me where the piece starts ( so i can avoid showing empty spaces when the tetromino spawns)
 
 Tetris
-Globant BootCamp
 
 Para este proyecto decidí utilizar la librería SDL2 para los input, sonido y gráficos dado que al haber trabajado con la misma ya tenía el setup en mi computadora, y conozco sus funciones básicas. 
 Para empezar voy a tener una clase denominada “Tetrómino”, la misma clase va a:
@@ -78,9 +33,7 @@ T rotada:
 {0,0,2,0}
 
 
-La idea me surgió porque para hacer mapas he trabajado con este tipo de arreglos, además al dibujarlo en una hoja tuve la idea de almacenar cada uno de los tetrominos en un arreglo de 4 dimensiones. ¿Esto que quiere decir?  Con un simple arreglo de 7x4x4x4 se solucionó. Se entiende así: si hay 7 piezas, con 4 rotaciones que debemos mostrar y cada pieza se encasilla en un arreglo de 4x4 podemos guardarlas en un arreglo de 7x4x4x4.
-Podríamos guardar las posiciones iniciales de cada pieza en otro array de 7x4x2. 7 piezas, 4 giros, 2 coordenadas
-
+La idea me surgió porque para hacer mapas he trabajado con este tipo de arreglos, además al dibujarlo en una hoja tuve la idea de almacenar cada uno de los tetrominos en un arreglo de 4 dimensiones. ¿Esto que quiere decir?  Con un simple arreglo de 7x4x4x4 se solucionó. Se entiende así: si hay 7 piezas, con 4 rotaciones que debemos mostrar y cada pieza se encasilla en un arreglo de 4x4 podemos guardarlas en un arreglo de 7x4x4x4
 
 
 
@@ -102,7 +55,8 @@ Podríamos crear una clase CreaVent/CreatesWind/ImputOutput (Entrada y salida de
 -	Un actualizar pantalla
 -	Uno que inicia gráfico
 -	 Y uno que toma altura y ancho de pantalla
-Sugiero crear esta clase para a la creación de ventanas y los eventos  AISLARLOS de la lógica del juego. Lo único que daría a Game (la siguiente clase a explicar) es la te
+Sugiero crear esta clase para a la creación de ventanas y los eventos  AISLARLOS de la lógica del juego. 
+
 Otra de las clases será nombrada GAME y tendrá todos los datos de board y Tetrómino (y de IO), y en ella ambas se relacionaran 
 Esta clase tendrá:
 -	PosX y posY de DONDE empieza en el tablero el Tetrómino (esto impide que muestre partes del arreglo vacías)
