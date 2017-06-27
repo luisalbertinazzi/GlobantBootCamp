@@ -19,9 +19,9 @@ int TetroI::getPiece(int pX, int pY)
 	switch (actualRotation)
 	{
 	case Ihor:
-		return (piece[0][pX][pY]);
+		return (piece[0][pY][pX]);
 		break;
-	case Iver:return (piece[1][pX][pY]);
+	case Iver:return (piece[1][pY][pX]);
 		break;
 	
 	}

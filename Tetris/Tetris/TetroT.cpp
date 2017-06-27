@@ -16,13 +16,13 @@ int TetroT::getPiece(int pX, int pY)
 	switch (actualRotation)
 	{
 	case T:
-		return (piece[0][pX][pY]);
+		return (piece[0][pY][pX]);
 		break;
-	case Tright:return (piece[1][pX][pY]);
+	case Tright:return (piece[1][pY][pX]);
 		break;
-	case Tup:return (piece[2][pX][pY]);
+	case Tup:return (piece[2][pY][pX]);
 		break;
-	case Tleft: return (piece[3][pX][pY]);
+	case Tleft: return (piece[3][pY][pX]);
 		break;
 	}
 }

@@ -15,13 +15,13 @@ int TetroLMirror::getPiece(int pX, int pY) {
 	switch (actualRotation)
 	{
 	case L:
-		return (piece[0][pX][pY]);
+		return (piece[0][pY][pX]);
 		break;
-	case Lup:return (piece[1][pX][pY]);
+	case Lup:return (piece[1][pY][pX]);
 		break;
-	case Lleft:return (piece[2][pX][pY]);
+	case Lleft:return (piece[2][pY][pX]);
 		break;
-	case Ldown: return (piece[3][pX][pY]);
+	case Ldown: return (piece[3][pY][pX]);
 		break;
 	}
 

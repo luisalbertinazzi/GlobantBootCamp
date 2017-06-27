@@ -4,7 +4,7 @@
 
 int Square::getPiece(int pX, int pY)
 {
-	return (piece[pX][pY]);
+	return (piece[pY][pX]);
 }
 
 void Square::rotateRight()

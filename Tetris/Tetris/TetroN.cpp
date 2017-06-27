@@ -16,11 +16,11 @@ int TetroN::getPiece(int pX, int pY)
 	switch (actualRotation)
 	{
 	case Nver:
-		return (piece[0][pX][pY]);
+		return (piece[0][pY][pX]);
 		break;
 
 	case Nhor:
-		return (piece[1][pX][pY]);
+		return (piece[1][pY][pX]);
 		break;
 	}
 }
