@@ -51,12 +51,15 @@ Iba a hacer en principio un tablero que solo DIBUJARA sobre la ventana del game 
 
 
 Podríamos crear una clase CreaVent/CreatesWind/ImputOutput (Entrada y salida de datos)  que crea la ventana, la limpia, actualiza la pantalla y toma los input con SDL, en esta podríamos tener un enum con colores y así es más fácil en main (o APP) crear un objeto de la misma. Tiene métodos que:
--	Dibujan un rectángulo
+-	Cargar imagenes
 -	Limpian pantalla
 -	Un get para las teclas
 -	Un actualizar pantalla
--	Uno que inicia gráfico
--	 Y uno que toma altura y ancho de pantalla
+-	Uno que inicializa la SDL 
+-	Un metodo para mezlar colores en la SDL
+- Un metodo que libere texturas
+- Un metodo de renderizado de la textura
+- variables de alto y ancho de la patalla, posicion del board y tamaño en alto y ancho de un cubo en pixeles
 
 Sugiero crear esta clase para a la creación de ventanas y los eventos  AISLARLOS de la lógica del juego. 
 
@@ -75,9 +78,9 @@ o	Seleccione la primer y segunda pieza al AZAR
 o	Poner la pieza en POSICION
 o	Saber rotación y tipo
 o	Puede haber otro método que sea CREAR pieza, que llamemos para darle al puntero de siguiente una pieza nueva, entonces crearíamos en primer lugar la primera y segunda en la inicialización y luego usaríamos CREAR pieza para renovar la siguiente pieza
--	La función que dibuja tiene los colores de CrearVent, puede asignar aleatoriamente colores a los bloques con una llamada a rand, de ahí un switch puede asignarlos
--	El método de dibujar el tablero lo único que debería hacer es dibujar las líneas verticales y horizontales del tablero, así como las de la pieza que viene. Aunque si tenemos un fondo como el que se nos fue provisto podríamos cargarlo  y delimitar sin colores
--	Tal vez en vez de llamar a todo en App podríamos tener una función que llame a las que dibujan las piezas actual y siguiente además del tablero (?)
+-	La función que dibuja se lleva las texturas, puede asignar aleatoriamente colores a los bloques con una llamada a rand, de ahí un switch puede asignarlos. Podriamos rendereizar todo aca
+-	El método de dibujar el tablero lo único que debería hacer asignar limites y valores en pixel para el tablero y el minitablero donde esta la pieza siguiente. 
+-	Podríamos tener una función que llame a las que dibujan las piezas actual y siguiente además del tableros
 -	Una variable con puntos que se acumulan si una línea es eliminada
 -	Una función que cambie el tiempo de espera para bajar la pieza cada 10 líneas eliminadas
 
