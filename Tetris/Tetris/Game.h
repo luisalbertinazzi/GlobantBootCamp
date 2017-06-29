@@ -33,6 +33,8 @@ public:
 	void NewTetro( int rand );
 	void DrawAll();
 
+	void setImages();
+
 	int getLvl();
 	int getWaitTime();
 

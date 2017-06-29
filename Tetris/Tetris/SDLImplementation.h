@@ -18,8 +18,8 @@ public:
 	Graphs(); //initializes SDL and variables
 
 	~Graphs(); // Dellocates
-	/*The boolean methods are mostly used for troubleshooting*/
 
+	/*The boolean methods are mostly used for troubleshooting*/
 	void Update();
 	int Events();
 	
@@ -27,10 +27,13 @@ public:
 	void blendMode(SDL_BlendMode blending);  // blending of colors for the SDL 
 	void loadImg(std::string imagePath);
 	void alphaSDL(Uint8 alpha);
+
+
 	bool isClosed();
+
 	void freeTextures();
 	
-	void render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip); //Prepares the image to show it on screen
+	void render(int x, int y, SDL_Rect* clip = NULL, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE); //Prepares the image to show it on screen
 
 	
 private:
