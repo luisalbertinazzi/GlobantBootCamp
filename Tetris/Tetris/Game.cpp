@@ -4,11 +4,14 @@
 
 Game::Game()
 {
+
+
 }
 
 
 Game::~Game()
 {
+
 }
 
 void Game::LvlUp()
@@ -70,7 +73,20 @@ void Game::Init() //Selects the new tetromino
 
 void Game::DrawTetro()
 {
-	
+	for (size_t i = X, t=0 ; i <= X+TetroHAndW; ++i, ++t)
+	{
+		for (size_t j = Y, t2 = 0; j <= Y + TetroHAndW; ++j, ++t2)
+		{
+			if (pPiece->getPiece[t][t2] != 0)
+			{
+				if (pPiece->getPiece[t][t2] == 2)
+					
+						tTile1.render(i, j);
+
+			}
+		}
+
+	}
 
 }
 

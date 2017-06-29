@@ -3,9 +3,9 @@
 
 //  Board is a class that just knows how to STORE values, checks collisions and deletes lines. Note that this class has lots of comments, that's just for this class
 // all the other classes will follow the same ordering of data and methods so we won't need such comments
-#define BoardWidht 12
-#define BoardHeight 20
-#define BoardRealWidht 10 // the collumns that we are using in the game to store pieces
+ unsigned const short BoardWidht = 12;
+ unsigned const short  BoardHeight = 20;
+ unsigned const short  BoardRealWidht = 10; // the collumns that we are using in the game to store pieces
 
 
 class Board

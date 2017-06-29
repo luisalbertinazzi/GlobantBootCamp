@@ -1,43 +1,47 @@
 #pragma once
-#include <SDL.h>
+#include "SDL.h"
+#include "SDL_image.h"
 #include <iostream>
-#include <SDL_image.h>
+#include <string>
 
-#define PositionOfB 320
-#define TileHAndW 30
 
-enum color {RED, BLACK, BLUE, YELLOW, ORANGE};
+unsigned const short PositionOfB = 320;
+unsigned const short  TileHAndW = 30;
+const int ScrW = 412;
+const int ScrH = 600;
 
-class SDLImplementation
+
+
+class Graphs
 {
 public:
-	SDLImplementation();
-	~SDLImplementation();
+	Graphs(); //initializes SDL and variables
+
+	~Graphs(); // Dellocates
+	/*The boolean methods are mostly used for troubleshooting*/
 
 	void Update();
 	int Events();
 	
+	void setColor(Uint8 red, Uint8 green, Uint8 blue);
+	void blendMode(SDL_BlendMode blending);  // blending of colors for the SDL 
+	void loadImg(std::string imagePath);
+	void alphaSDL(Uint8 alpha);
 	bool isClosed();
+	void freeTextures();
+	
+	void render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip); //Prepares the image to show it on screen
 
-	void pollEvents();
 	
 private:
 	/*I'm using p before the name of the pointers so I know they are pointers*/
-	SDL_Texture *pTile = NULL, *pScreen = NULL; //tile of the piece and background
-	SDL_Window *pWindow = NULL; //our window 
-	SDL_Renderer *pRenderer = NULL;
-	SDL_Rect BGround, Tile;
+	SDL_Texture  *txture = nullptr; 
+	SDL_Window *pWindow = nullptr; //our window 
+	SDL_Renderer *pRenderer = nullptr;
 
 	bool closed = false;
-
-	const int ScrW = 412;
-	const int ScrH = 600;
-
-
-
 	bool Init();
-	void CreateRender();
-	void LoadText();
-	void DestroyWindow();
+	bool CreateRender();
+	int txWidht, txHeight;
 };
 
