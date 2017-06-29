@@ -1,5 +1,6 @@
 #pragma once
 #include "Tetromino.h"
+
 class TetroI : public Tetromino
 {
 public:
@@ -9,9 +10,9 @@ public:
 	TetroI();
 	~TetroI();
 private:
-	enum rotation { Iver, Ihor };   // "I" just has 2 possible positions
-	rotation actualRotation = Ihor;
-	char piece[2][4][4]{
+	enum class rotation { Iver, Ihor };   // "I" just has 2 possible positions
+	rotation actualRotation = rotation::Ihor;
+	char piece[2][TetroHAndW][TetroHAndW]{
 		{
 			{ 0, 0, 0, 0 },
 			{ 0, 0, 0, 0 },

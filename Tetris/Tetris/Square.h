@@ -11,7 +11,7 @@ public:
 	Square();
 	~Square();
 private:
-	char piece[4][4]{                  //It doesn't have rotations
+	char piece[TetroHAndW][TetroHAndW]{                  //It doesn't have rotations
 			{ 0, 0, 0, 0 },
 			{ 0, 1, 1, 0 },
 			{ 0, 2, 1, 0 },

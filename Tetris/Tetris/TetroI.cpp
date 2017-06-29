@@ -15,36 +15,18 @@ TetroI::~TetroI()
 }
 
 int TetroI::getPiece(int pX, int pY)
-{
-	switch (actualRotation)
-	{
-	case Ihor:
-		return (piece[0][pY][pX]);
-		break;
-	case Iver:return (piece[1][pY][pX]);
-		break;
-	
-	}
-
+{	
+	return (piece[static_cast<int>(actualRotation)][pY][pX]);
 }
+
 void TetroI::rotateRight() {
-	switch (actualRotation)
-	{
-	case Ihor: actualRotation = Iver;
-		break;
-	case Iver:actualRotation = Ihor;
-		break;
-	
+	actualRotation = static_cast<rotation>((static_cast<int>(actualRotation) + 1) % 2);
 	}
-}
 
-void TetroI::rotateLeft()
-{
-	switch (actualRotation)
-	{
-	case Ihor: actualRotation = Iver;
-		break;
-	case Iver:actualRotation = Ihor;
-		break;
-	}
+void TetroI::rotateLeft(){
+	if (actualRotation == rotation::Ihor)
+		actualRotation = static_cast<rotation>(1);
+	else
+	actualRotation = static_cast<rotation>(static_cast<int>(actualRotation) - 1);	
+		
 }

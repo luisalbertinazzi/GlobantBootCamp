@@ -13,36 +13,19 @@ TetroNMirror::~TetroNMirror()
 
 int TetroNMirror::getPiece(int pX, int pY)
 {
-	switch (actualRotation)
-	{
-	case Nver:
-		return (piece[0][pY][pX]);
-		break;
-
-	case Nhor:
-		return (piece[1][pY][pX]);
-		break;
-	}
+	return (piece[static_cast<int>(actualRotation)][pY][pX]);
 }
 
 void TetroNMirror::rotateRight()
 {
-	switch (actualRotation)
-	{
-	case Nhor: actualRotation = Nver;
-		break;
-	case Nver:actualRotation = Nhor;
-		break;
-	}
+	actualRotation = static_cast<rotation>((static_cast<int>(actualRotation) + 1) % 2);
 }
 
 void TetroNMirror::rotateLeft()
 {
-	switch (actualRotation)
-	{
-	case Nhor: actualRotation = Nver;
-		break;
-	case Nver:actualRotation = Nhor;
-		break;
-	}
+	if (actualRotation == rotation::Nver)
+		actualRotation = static_cast<rotation>(1);
+	else
+		actualRotation = static_cast<rotation>(static_cast<int>(actualRotation) - 1);
+	
 }

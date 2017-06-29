@@ -12,47 +12,19 @@ TetroLMirror::~TetroLMirror()
 }
 
 int TetroLMirror::getPiece(int pX, int pY) {
-	switch (actualRotation)
-	{
-	case L:
-		return (piece[0][pY][pX]);
-		break;
-	case Lup:return (piece[1][pY][pX]);
-		break;
-	case Lleft:return (piece[2][pY][pX]);
-		break;
-	case Ldown: return (piece[3][pY][pX]);
-		break;
-	}
-
+	return (piece[static_cast<int>(actualRotation)][pY][pX]);
 }
 void TetroLMirror::rotateRight() {
-	switch (actualRotation)
-	{
-	case L: actualRotation = Ldown;
-		break;
-	case Lup:actualRotation = L;
-		break;
-	case Lleft:actualRotation = Lup;
-		break;
-	case Ldown: actualRotation = Lleft;
-		break;
-	}
+
+	actualRotation = static_cast<rotation>((static_cast<int>(actualRotation) + 1) % 4);
 }
 
 void TetroLMirror::rotateLeft()
 {
-	switch (actualRotation)
-	{
-	case L: actualRotation = Lup;
-		break;
-	case Lup:actualRotation = Lleft;
-		break;
-	case Lleft:actualRotation = Ldown;
-		break;
-	case Ldown: actualRotation = L;
-		break;
-	}
+	actualRotation = static_cast<rotation>(static_cast<int>(actualRotation) - 1);
+
+	if (static_cast<int>(actualRotation) == -1)
+		actualRotation = Ldown;
 }
 
 

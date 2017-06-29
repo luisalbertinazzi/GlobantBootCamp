@@ -13,36 +13,18 @@ TetroN::~TetroN()
 
 int TetroN::getPiece(int pX, int pY)
 {
-	switch (actualRotation)
-	{
-	case Nver:
-		return (piece[0][pY][pX]);
-		break;
-
-	case Nhor:
-		return (piece[1][pY][pX]);
-		break;
-	}
+	return (piece[static_cast<int>(actualRotation)][pY][pX]);
 }
 
 void TetroN::rotateRight()
 {
-	switch (actualRotation)
-	{
-	case Nhor: actualRotation = Nver;
-		break;
-	case Nver:actualRotation = Nhor;
-		break;
-	}
+	actualRotation = static_cast<rotation>((static_cast<int>(actualRotation) + 1) % 2);
 }
 
 void TetroN::rotateLeft()
 {
-	switch (actualRotation)
-	{
-	case Nhor: actualRotation = Nver;
-		break;
-	case Nver:actualRotation = Nhor;
-		break;
-	}
+	if (actualRotation == rotation::Nver)
+		actualRotation = static_cast<rotation>(1);
+	else
+		actualRotation = static_cast<rotation>(static_cast<int>(actualRotation) - 1);
 }

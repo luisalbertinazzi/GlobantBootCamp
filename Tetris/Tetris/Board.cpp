@@ -2,24 +2,24 @@
 #include "Board.h"
 
 
-Board::Board(int ScrHeight)
+Board::Board()
 {
-	Screen = ScrHeight;
-
+	Initializate();
 }
+
 
 Board::~Board()
 {
 }
 
-void Board::Store(Tetromino *tetro, int x, int y)
+void Board::Store( Tetromino* const tetro, unsigned short int x, unsigned short int y)
 {
-	for (int i = x, t = 0; i < x + 4; i++, t++) 
+	for (int i = x, t = 0; i < x + TetroHAndW; i++, t++) 
 	{/*  This was a tricky one for me to understand. It was necessary to get the position of the TETROMINO array to start where we needed to store it,
 	     so "i" will be the BOARD position and "t" the TETROMINO position. 4 is the number of rows and columns of the TETROMINO (it'd be better if
 		 you draw it to understand it)*/
 
-		for (int i2 = y, t2 = 0; i2 < y + 4; i2++, t2++) // we move the other axis
+		for (int i2 = y, t2 = 0; i2 < y + TetroHAndW; i2++, t2++) // we move the other axis
 		{
 			if (tetro->getPiece(t, t2) != 0) //checks the position in the array of the piece
 				ArrayBoard[i][i2] = OC;
@@ -32,10 +32,10 @@ void Board::CheckAndDelete()
 {
 	/* this method works with "DeleteOneLine", so it can delete as many lines as necessary*/
 
-	for (int i = 0; i < 20; i++) // we move through the ROWS
+	for (int i = 0; i < BoardHeight; i++) // we move through the ROWS
 	{
 		int j = 1;
-		while (j < 11)   // we need to see if all the positions in the row we are looking are filled
+		while (j <= BoardRealWidht)   // we need to see if all the positions in the row we are looking are filled
 		{
 			if (ArrayBoard[i][j] != OC) 
 					break; //if ONE position isnt filled we just skip the addition on the accumulator "j" and breaks the loop. This is VERY important, if we don't break the loop it would continue for ever
@@ -45,17 +45,20 @@ void Board::CheckAndDelete()
 		
 
 		if (j == 11) //this means all positions were "OC"
+		{
 			DeleteOneLine(i); //we delete that line
+			i = i - 1; //this iterates the method to check the line that we deleted again
+		}
 	}
 
 }
 
-bool Board::Collision(Tetromino * tetro, int x, int y)
+bool Board::Collision( Tetromino * const tetro, unsigned short int x, unsigned short int y)
 {
-	for (int i = x, t = 0; i < x + 4; i++, t++)
+	for (int i = x, t = 0; i < x + TetroHAndW; ++i, ++t)
 	{/* We use the same logic that the "store" method*/
 
-		for (int i2 = y, t2 = 0; i2 < y + 4; i2++, t2++) // we move the other axis
+		for (int i2 = y, t2 = 0; i2 < y + TetroHAndW; ++i2, ++t2) // we move the other axis
 		{ 			
 			if ((tetro->getPiece(t, t2) != 0) && (CheckPosition(i, i2) != 0)) 
 				return false;
@@ -63,9 +66,15 @@ bool Board::Collision(Tetromino * tetro, int x, int y)
 	}
 }
 
-bool Board::CheckPosition(int x, int y)
+
+
+
+
+
+
+bool Board::CheckPosition(unsigned int x, unsigned  int y)
 {
-	if (ArrayBoard[y][x] == VACANT) true;
+	if (static_cast<vFill>(ArrayBoard[y][x]) == VACANT) return true;
 
 	else return false;
 }
@@ -75,10 +84,10 @@ bool Board::CheckPosition(int x, int y)
 void Board::Initializate()
 {
 	for (int i = 1; i < 11; i++)
-		for (int j = 0; j < 20; j++)
+		for (int j = 0; j < BoardHeight; j++)
 			ArrayBoard[j][i] = VACANT;
 
-	for (int i = 0; i < 20; i++) 
+	for (int i = 0; i < BoardHeight; i++) 
 	{
 		ArrayBoard[i][0] = OC;  //the first column (and the last two) will be filled with OCUPPIED so then we can check for collisions with the limit of the board
 		ArrayBoard[i][11] = OC; 
@@ -91,7 +100,7 @@ void Board::Initializate()
 	
 }
 
-void Board::DeleteOneLine(int y)
+void Board::DeleteOneLine(unsigned short int y)
 { 
 	for (int i = y; i > 0 ; i--)
 	{

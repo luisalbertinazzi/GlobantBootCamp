@@ -12,7 +12,7 @@ public:
 private:
 	enum rotation { T, Tright, Tup, Tleft };
 	rotation actualRotation = Tleft;
-	char piece[4][4][4]{
+	char piece[4][TetroHAndW][TetroHAndW]{
 		{
 			{ 0, 0, 0, 0 },
 			{ 0, 0, 0, 0 },
