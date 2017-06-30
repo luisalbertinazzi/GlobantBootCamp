@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Board.h"
-#include "SDLImplementation.h"
+#include "Rect.h"
 #include <time.h>
 #include <string>
 
@@ -17,12 +17,12 @@
 
 /*Scene graphs*/
 
-Graphs Window;
 
-Graphs tTile1, tTile2, tTile3, tTile4;
 
-Graphs nextTile1, nextTile2, nextTile3, nextTile4;
-
+const int offSetBoard = 10 ;
+const int tileHeightAndWidht = 30;
+const short int initialPositionX = 3, initialPositionY = 1;
+const  int xPositionNewPiece = 0, yPositionNewPiece = 0;
 
 class Game
 {
@@ -31,28 +31,31 @@ public:
 	~Game();
 	void LvlUp();
 	void NewTetro( int rand );
-	void DrawAll();
-
-	void setImages();
+	
 
 	int getLvl();
 	int getWaitTime();
 
+	void DrawAll();
+	void setImages();
+
 	int X, Y;//this is where the piece is falling
 
-	const short int initialPositionX = 3, initialPositionY = 1;
-	const  int xPositionNewPiece = 0, yPositionNewPiece = 0;
+	
+	
 
 private:
 	Board *pBoard;
 	Tetromino *pPiece, *pNextPiece;
 	
-	int Lvl=0, WaitTime=800;
+	int Lvl, WaitTime;
 	
 	void Init();
 	void DrawTetro();
 	void DrawBoard();
 
+	int xInPixels(int x);
+	int yInPixels(int y);
 	int RandNumber();
 	
 };

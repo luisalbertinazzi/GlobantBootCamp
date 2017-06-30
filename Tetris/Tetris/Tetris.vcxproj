@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{67364EA3-0039-40F1-BFC8-FC7E3745C3FF}</ProjectGuid>
+    <ProjectGuid>{FCADB987-D400-4FC7-8EDB-2C342C09CC24}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Tetris</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
@@ -88,12 +88,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Usuario\Documents\GLOBANT\GlobantBootCamp\Tetris\Tetris\SDL 2\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Documents\Visual Studio 2017\Projects\Tetris\Tetris\SDL 2\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>C:\Users\Usuario\Documents\GLOBANT\GlobantBootCamp\Tetris\Tetris\SDL 2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2_image.lib;SDL2main.lib;SDL2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Usuario\Documents\Visual Studio 2017\Projects\Tetris\Tetris\SDL 2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2_image.lib;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -143,7 +143,7 @@
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="SDLImplementation.h" />
+    <ClInclude Include="Rect.h" />
     <ClInclude Include="Square.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -154,11 +154,12 @@
     <ClInclude Include="TetroN.h" />
     <ClInclude Include="TetroNMirror.h" />
     <ClInclude Include="TetroT.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="SDLImplementation.cpp" />
+    <ClCompile Include="Rect.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -174,6 +175,7 @@
     <ClCompile Include="TetroN.cpp" />
     <ClCompile Include="TetroNMirror.cpp" />
     <ClCompile Include="TetroT.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

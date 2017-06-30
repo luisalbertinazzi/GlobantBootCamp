@@ -4,8 +4,10 @@
 
 Game::Game()
 {
-
-
+	Init();
+	Lvl = 0;
+	WaitTime = 800;
+	
 }
 
 
@@ -50,22 +52,6 @@ void Game::NewTetro(int rand)
 
 }
 
-void Game::setImages()
-{
-	Window.loadImg("Img/bg.png");
-
-	tTile1.loadImg("Img/1.png");
-	tTile2.loadImg("Img/1.png");
-	tTile3.loadImg("Img/1.png");
-	tTile4.loadImg("Img/1.png");
-
-	nextTile1.loadImg("Img/1.png");
-	nextTile2.loadImg("Img/1.png");
-	nextTile3.loadImg("Img/1.png");
-	nextTile4.loadImg("Img/1.png");
-
-
-}
 
 int Game::getLvl()
 {
@@ -90,20 +76,36 @@ void Game::Init() //Selects the new tetromino
 
 void Game::DrawTetro()
 {
-	for (size_t i = X, t = 0; i <= X + TetroHAndW; ++i, ++t)
+	
+
+	for (int i = X; i <= X + TetroHAndW; ++i)
 	{
-		for (size_t j = Y, t2 = 0; j <= Y + TetroHAndW; ++j, ++t2)
+		int tetroInX = 0;
+
+		for (int j = Y; j <= Y + TetroHAndW; ++j)
 		{
-			if (pPiece->getPiece[t][t2] != 0)
+			int tetroInY = 0;
+			if (pPiece->getPiece( tetroInX, tetroInY ) != 0)
 			{
-				if (pPiece->getPiece[t][t2] == 2)
-						tTile1.render(i, j);
-
+					
 			}
+			++tetroInY;
 		}
-
+		++tetroInX;
 	}
 
+}
+
+int Game::xInPixels(int x)
+{
+	int xPixels = x * tileHeightAndWidht + offSetBoard;
+	return xPixels;
+}
+
+int Game::yInPixels(int y)
+{
+	int yPixels = y * tileHeightAndWidht+ offSetBoard;
+	return yPixels;
 }
 
 int Game::RandNumber()
