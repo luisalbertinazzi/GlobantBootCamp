@@ -13,20 +13,47 @@ TetroT::~TetroT()
 
 int TetroT::getPiece(int pX, int pY)
 {
-	return (piece[static_cast<int>(actualRotation)][pY][pX]);
+	switch (actualRotation)
+	{
+	case T:
+		return (piece[0][pX][pY]);
+		break;
+	case Tright:return (piece[1][pX][pY]);
+		break;
+	case Tup:return (piece[2][pX][pY]);
+		break;
+	case Tleft: return (piece[3][pX][pY]);
+		break;
+	}
 }
 
 void TetroT::rotateRight()
 {
-	actualRotation = static_cast<rotation>((static_cast<int>(actualRotation) + 1) % 4);
+	switch (actualRotation)
+	{
+	case T: actualRotation = Tleft;
+		break;
+	case Tright:actualRotation = T;
+		break;
+	case Tup:actualRotation = Tright;
+		break;
+	case Tleft: actualRotation = Tup;
+		break;
+	}
+
 }
 
 void TetroT::rotateLeft()
 {
-	
-		actualRotation = static_cast<rotation>(static_cast<int>(actualRotation) - 1);
-
-		if (static_cast<int>(actualRotation) == -1)
-			actualRotation = Tleft;
-
+	switch (actualRotation)
+	{
+	case T: actualRotation = Tright;
+		break;
+	case Tright:actualRotation = Tup;
+		break;
+	case Tup:actualRotation = Tleft;
+		break;
+	case Tleft: actualRotation = T;
+		break;
+	}
 }

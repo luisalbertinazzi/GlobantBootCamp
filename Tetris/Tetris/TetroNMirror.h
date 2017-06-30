@@ -11,7 +11,7 @@ public:
 private:
 	enum rotation { Nver, Nhor };
 	rotation actualRotation = Nver;
-	char piece[2][TetroHAndW][TetroHAndW]{
+	char piece[2][4][4]{
 		{
 			{ 0, 0, 0, 0 },
 			{ 0, 1, 0, 0 },

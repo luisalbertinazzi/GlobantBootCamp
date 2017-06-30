@@ -7,8 +7,6 @@ Because this is an abstract class, all the derived types must have an implimenta
 
 */
 
-unsigned const short  TetroHAndW = 4;
-
 class Tetromino
 {
 public:
