@@ -1,19 +1,2 @@
-﻿  stdafx.cpp
-  Window.cpp
-  TetroT.cpp
-  TetroNMirror.cpp
-  TetroN.cpp
-  Tetromino.cpp
-  TetroLMirror.cpp
-  TetroL.cpp
-  TetroI.cpp
-  Tetris.cpp
-  Square.cpp
-  Rect.cpp
-  Game.cpp
-  Board.cpp
-  Generating Code...
-c:\users\usuario\documents\globant\globantbootcamp\tetris\tetris\board.cpp(67): warning C4715: 'Board::Collision': not all control paths return a value
-  LINK : C:\Users\Usuario\Documents\GLOBANT\GlobantBootCamp\Tetris\Debug\Tetris.exe not found or not built by the last incremental link; performing full link
-  Tetris.vcxproj -> C:\Users\Usuario\Documents\GLOBANT\GlobantBootCamp\Tetris\Debug\Tetris.exe
+﻿  Tetris.vcxproj -> C:\Users\Usuario\Documents\GLOBANT\GlobantBootCamp\Tetris\Debug\Tetris.exe
   Tetris.vcxproj -> C:\Users\Usuario\Documents\GLOBANT\GlobantBootCamp\Tetris\Debug\Tetris.pdb (Partial PDB)
