@@ -2,7 +2,8 @@
 #include "Game.h"
 
 
-Game::Game()
+Game::Game(Tetromino *piece, Tetromino *nextpiece, Board *board) :
+	pPiece(piece), pNextPiece(nextpiece), pBoard(board)
 {
 	Init();
 	Lvl = 0;
@@ -65,36 +66,20 @@ int Game::getWaitTime()
 
 void Game::Init() //Selects the new tetromino
 {
-	int a = RandNumber();
+	int a = RandNumber(), b;
 	NewTetro(a);
 	pPiece = pNextPiece;
-	NewTetro(a);
-	X = initialPositionX;
-	Y = initialPositionY;
-	
-}
-
-void Game::DrawTetro()
-{
-	
-
-	for (int i = X; i <= X + TetroHAndW; ++i)
+	do
 	{
-		int tetroInX = 0;
+		b = RandNumber();
+	} while (b == a);
 
-		for (int j = Y; j <= Y + TetroHAndW; ++j)
-		{
-			int tetroInY = 0;
-			if (pPiece->getPiece( tetroInX, tetroInY ) != 0)
-			{
-					
-			}
-			++tetroInY;
-		}
-		++tetroInX;
-	}
-
+	NewTetro(b);
+	X = initialPositionX;
+	Y = initialPositionY;	
 }
+
+
 
 int Game::xInPixels(int x)
 {
@@ -110,6 +95,6 @@ int Game::yInPixels(int y)
 
 int Game::RandNumber()
 {
-	int randNum = rand() % 7; //random number beetween 0 and 6
-	return randNum;
+	srand(time(NULL));
+	return rand() % 6 + 0;
 }

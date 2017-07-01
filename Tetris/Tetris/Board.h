@@ -3,9 +3,8 @@
 
 //  Board is a class that just knows how to STORE values, checks collisions and deletes lines. Note that this class has lots of comments, that's just for this class
 // all the other classes will follow the same ordering of data and methods so we won't need such comments
- unsigned const short BoardWidht = 12;
+ unsigned const short BoardWidht = 10;
  unsigned const short  BoardHeight = 20;
- unsigned const short  BoardRealWidht = 10; // the collumns that we are using in the game to store pieces
 
 
 class Board
@@ -26,10 +25,10 @@ public:
 
 private:
 	
-	enum vFill {OC, VACANT};
+	enum vFill {VACANT, OC};
 
 	
-	int ArrayBoard[BoardHeight][BoardWidht]; // You'll notice that the board is actully 20x10, that's because we need the extra line tobe filled so the pieces have a limit
+	int ArrayBoard[BoardHeight][BoardWidht]; 
 	
 
 	
