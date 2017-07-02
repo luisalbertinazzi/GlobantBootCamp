@@ -13,7 +13,7 @@ TetroN::~TetroN()
 
 int TetroN::getPiece(int pX, int pY)
 {
-	return (piece[static_cast<int>(actualRotation)][pX][pY]);
+	return (piece[actualRotation][pX][pY]);
 }
 
 void TetroN::rotateRight()

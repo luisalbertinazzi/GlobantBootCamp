@@ -20,8 +20,8 @@ void Board::Store( Tetromino* const tetro, unsigned short int x, unsigned short 
 		{
 			if (tetro->getPiece(i, j) !=0 ) //checks the position in the array of the piece
 			{
-				ArrayBoard[x+i-1][y+j-1] = OC;
-				std::cout<<"\n" << x+i-1 <<"   "<< y+j-1 << "    Here is where i stored the piece      ";
+				ArrayBoard[x+i][y+j] = OC;
+				//std::cout<<"\n" << x+i <<"   "<< y+j << "    Here is where i stored the piece      ";
 			}
 		}
 	}
@@ -62,9 +62,9 @@ bool Board::CanThePieceMove( Tetromino * const tetro, unsigned short int x, unsi
 		{
 			/* Is the piece outside the limit*/
 
-			if ((i +x )< 0 || (i + x)> BoardWidht - 1 || (j+y) > BoardHeight - 1)
+			if ((i+x )< 0 || (i + x)> BoardWidht - 1 || (j+y) > BoardHeight - 1)
 			{
-				if (tetro->getPiece(i, j) == 1)
+				if (tetro->getPiece(i, j) ==1 )
 				{
 					return false;
 				}
@@ -72,7 +72,7 @@ bool Board::CanThePieceMove( Tetromino * const tetro, unsigned short int x, unsi
 
 			if (j >= 0) //collision with something stored
 			{
-				if ((tetro->getPiece(i, j) ==1 ) && (returnPosition(x+1, y+1) ==1  ))
+				if ((tetro->getPiece(i, j) !=0 ) && (returnPosition(x+i, y+j) != 0))
 				{
 					return false;
 				}

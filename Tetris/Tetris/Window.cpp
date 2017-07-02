@@ -24,9 +24,9 @@ bool Window::isClosed()
 	return closed;
 }
 
-void Window::event()
+void Window::event(SDL_Event event)
 {
-	SDL_Event event;
+	
 	if(SDL_PollEvent(&event))
 	{
 		switch (event.type)

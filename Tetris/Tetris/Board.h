@@ -21,6 +21,7 @@ public:
 	bool CanThePieceMove(Tetromino * const tetro, unsigned short int x, unsigned short int y);//checks collisions
 	
 	int returnPosition(int x, int y);
+
 	bool IsThisOC(unsigned int x, unsigned int y);// tells if the position is free or occupied
 	
 

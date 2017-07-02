@@ -9,7 +9,7 @@ public:
 
 	~Window();
 	bool isClosed();
-	void event();
+	void event(SDL_Event event);
 	void clear() const ;
 
 private:// private methods

@@ -1,5 +1,4 @@
-﻿  Board.cpp
-c:\users\usuario\documents\visual studio 2017\projects\tetris\tetris\board.cpp(117): warning C4553: '==': operator has no effect; did you intend '='?
-c:\users\usuario\documents\visual studio 2017\projects\tetris\tetris\board.cpp(107): warning C4715: 'Board::IsThisOC': not all control paths return a value
+﻿  Game.cpp
+c:\users\usuario\documents\visual studio 2017\projects\tetris\tetris\game.cpp(149): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Tetris.vcxproj -> C:\Users\Usuario\Documents\Visual Studio 2017\Projects\Tetris\Debug\Tetris.exe
   Tetris.vcxproj -> C:\Users\Usuario\Documents\Visual Studio 2017\Projects\Tetris\Debug\Tetris.pdb (Partial PDB)

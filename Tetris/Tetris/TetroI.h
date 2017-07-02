@@ -11,7 +11,7 @@ public:
 	~TetroI();
 private:
 	enum class rotation { Iver, Ihor };   // "I" just has 2 possible positions
-	rotation actualRotation = rotation::Ihor;
+	rotation actualRotation = rotation::Iver;
 	char piece[2][TetroHAndW][TetroHAndW]{
 		{
 			{ 0, 0, 0, 0 },

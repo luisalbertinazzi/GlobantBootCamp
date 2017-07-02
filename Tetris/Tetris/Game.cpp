@@ -67,15 +67,15 @@ int Game::getWaitTime()
 void Game::drawAll(Rect &rect, Rect &BG, Rect &rect2)
 {
 	BG.draw();
-	int mPixelsX = xInPixels(xOfThePieceInTheBoard)- tileHeightAndWidht;
-	int mPixelsY = yInPixels(yOfThePieceInTheBoard) - tileHeightAndWidht;
+	int mPixelsX = xInPixels(xOfThePieceInTheBoard);
+	int mPixelsY = yInPixels(yOfThePieceInTheBoard);
 	for (size_t x = 0; x < TetroHAndW; ++x)
 	{
 		for (size_t y = 0; y < TetroHAndW; ++y)
 		{
 			if (pPiece->getPiece(x, y) != 0)
 			{
-				rect.changeXandYto(mPixelsX + (x*tileHeightAndWidht), (mPixelsY + ((y+1)*tileHeightAndWidht)));
+				rect.changeXandYto( mPixelsX + ((x)*tileHeightAndWidht), (mPixelsY + ((y)*tileHeightAndWidht)));
 				rect.draw();
 			}
 			if (pNextPiece->getPiece(x, y) != 0)
@@ -93,12 +93,12 @@ void Game::drawAll(Rect &rect, Rect &BG, Rect &rect2)
 		{
 			if (pBoard->returnPosition(j, i)!=0)
 			{
-				std::cout <<"\n"<< pBoard->returnPosition(j, i)<< "Array filled with that \n" ;
+				//std::cout <<"\n"<< pBoard->returnPosition(j, i)<< "Array filled with that \n" ;
 				rect2.changeXandYto(xInPixels(j), xInPixels(i));
-				std::cout << "\n" << j << "   " << xInPixels(j) << "   Rendered tile2 here   x  ";
-				std::cout << "\n" << i << "   " << xInPixels(i) << "   Rendered tile2 here  y   ";
+				//std::cout << "\n" << j << "   " << xInPixels(j) << "   Rendered tile2 here   x  ";
+				//std::cout << "\n" << i << "   " << xInPixels(i) << "   Rendered tile2 here  y   ";
 				rect2.draw();
-				system("PAUSE");
+				
 			}
 		}
 		
@@ -124,7 +124,7 @@ void Game::Init() //Selects the new tetromino
 
 	NewTetro(b);
 	xOfThePieceInTheBoard = initialPositionX;
-	yOfThePieceInTheBoard = initialPositionY;	
+	yOfThePieceInTheBoard = 0;	
 }
 
 
@@ -139,7 +139,7 @@ int Game::xInPixels(int x)
 
 int Game::yInPixels(int y)
 {
-	int yPixels = (y-1) * tileHeightAndWidht+ offSetBoard;
+	int yPixels = (y) * tileHeightAndWidht+ offSetBoard;
 	
 	return yPixels;
 }
