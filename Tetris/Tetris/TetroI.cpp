@@ -25,8 +25,14 @@ void TetroI::rotateRight() {
 
 void TetroI::rotateLeft(){
 	if (actualRotation == rotation::Ihor)
-		actualRotation = static_cast<rotation>(1);
+	{
+		actualRotation = Iver;
+	}
 	else
-	actualRotation = static_cast<rotation>(static_cast<int>(actualRotation) - 1);	
+	{
+		actualRotation = Ihor;
+	}
+
+	
 		
 }

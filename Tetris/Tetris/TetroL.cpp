@@ -10,7 +10,8 @@ TetroL::TetroL()
 TetroL::~TetroL()
 {
 }
-int TetroL::getPiece(int pX, int pY) {
+int TetroL::getPiece(int pX, int pY) 
+{
 	return (piece[static_cast<int>(actualRotation)][pX][pY]);
 }
 void TetroL::rotateRight() { 

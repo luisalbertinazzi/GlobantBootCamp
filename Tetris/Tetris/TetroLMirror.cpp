@@ -11,7 +11,8 @@ TetroLMirror::~TetroLMirror()
 {
 }
 
-int TetroLMirror::getPiece(int pX, int pY) {
+int TetroLMirror::getPiece(int pX, int pY)
+{
 	return (piece[static_cast<int>(actualRotation)][pX][pY]);
 }
 void TetroLMirror::rotateRight() {

@@ -41,6 +41,24 @@ void pullEvents(Window &window, Game &game, Board &board) {
 					++game.yOfThePieceInTheBoard;
 				}
 				break;
+			case SDLK_UP:
+				
+				game.pPiece->rotateRight();
+				if (!board.CanThePieceMove(game.pPiece, game.xOfThePieceInTheBoard, game.yOfThePieceInTheBoard ))
+				{
+					game.pPiece->rotateLeft();
+				}
+				
+
+				break;
+			case SDLK_z :
+				game.pPiece->rotateLeft();
+				if (!board.CanThePieceMove(game.pPiece, game.xOfThePieceInTheBoard, game.yOfThePieceInTheBoard))
+				{
+					game.pPiece->rotateRight();
+				}
+
+				break;
 			default:
 				break;
 			}
