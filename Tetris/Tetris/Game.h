@@ -22,7 +22,7 @@
 const int offSetBoard = 10 ;
 const int tileHeightAndWidht = 30;
 const short int initialPositionX = 3, initialPositionY = 0;
-const  int xPositionNewPiece = 0, yPositionNewPiece = 0;
+const  int xPositionNewPiece = 329, yPositionNewPiece = 45;
 
 class Game
 {
@@ -36,18 +36,18 @@ public:
 	int getLvl();
 	int getWaitTime();
 
-	
-	int X, Y;//this is where the piece is falling
-
+	void drawAll(Rect &rect, Rect &BG, Rect &rect2);
+	int xOfThePieceInTheBoard, yOfThePieceInTheBoard;//this is where the piece is falling
+	void getNextPiece();
 
     int xInPixels(int x);
 	int yInPixels(int y);
-	
-	
+	Tetromino *pPiece;
+	int RandNumber();
 
 private:
 	Board *pBoard;
-	Tetromino *pPiece, *pNextPiece;
+	Tetromino *pNextPiece;
 	
 	int Lvl, WaitTime;
 	
@@ -56,7 +56,7 @@ private:
 	
 
 	
-	int RandNumber();
+	
 	
 };
 

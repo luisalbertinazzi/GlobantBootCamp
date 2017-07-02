@@ -6,7 +6,7 @@
 Window::Window(int width, int height, int posX, int posY):
 windowW(width), windowH(height), windowPosX(posX), windowPosY(posY)
 {
-		closed = !init();
+	closed = !init();
 	
 }
 

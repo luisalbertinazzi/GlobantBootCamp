@@ -18,23 +18,24 @@ public:
 
 	void CheckAndDelete();// checks lines that need to be erased (bc they're occupied)
 
-	bool Collision(Tetromino * const tetro, unsigned short int x, unsigned short int y);//checks collisions
-
+	bool CanThePieceMove(Tetromino * const tetro, unsigned short int x, unsigned short int y);//checks collisions
 	
+	int returnPosition(int x, int y);
+	bool IsThisOC(unsigned int x, unsigned int y);// tells if the position is free or occupied
 	
 
 private:
 	
-	enum vFill {VACANT, OC};
+	enum {VACANT, OC};
 
 	
-	int ArrayBoard[BoardHeight][BoardWidht]; 
-	
-
-	
+    int ArrayBoard[BoardWidht][BoardHeight] = { 0 };
 	void Initializate();// the board will be filled with "VACANT"
+
+	
+	
 	void DeleteOneLine(unsigned short int y); //This method will delete only ONE line of the array, and then it will bring all the pieces one space down
-	bool CheckPosition(unsigned int x, unsigned int y);// tells if the position is free or occupied
+	
 
 };
 

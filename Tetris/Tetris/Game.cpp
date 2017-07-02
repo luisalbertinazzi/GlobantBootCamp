@@ -7,7 +7,7 @@ Game::Game(Tetromino *piece, Tetromino *nextpiece, Board *board) :
 {
 	Init();
 	Lvl = 0;
-	WaitTime = 800;
+	WaitTime = 1500;
 	
 }
 
@@ -64,6 +64,54 @@ int Game::getWaitTime()
 	return WaitTime;
 }
 
+void Game::drawAll(Rect &rect, Rect &BG, Rect &rect2)
+{
+	BG.draw();
+	int mPixelsX = xInPixels(xOfThePieceInTheBoard)- tileHeightAndWidht;
+	int mPixelsY = yInPixels(yOfThePieceInTheBoard) - tileHeightAndWidht;
+	for (size_t x = 0; x < TetroHAndW; ++x)
+	{
+		for (size_t y = 0; y < TetroHAndW; ++y)
+		{
+			if (pPiece->getPiece(x, y) != 0)
+			{
+				rect.changeXandYto(mPixelsX + (x*tileHeightAndWidht), (mPixelsY + ((y+1)*tileHeightAndWidht)));
+				rect.draw();
+			}
+			if (pNextPiece->getPiece(x, y) != 0)
+			{
+				rect2.changeXandYto((x*tileHeightAndWidht) + xPositionNewPiece, (y*tileHeightAndWidht) + yPositionNewPiece);
+				rect2.draw();
+			}
+		}
+
+	}
+
+	for (size_t i = 0; i <BoardHeight; ++i)
+	{
+		for (size_t j = 0; j <  BoardWidht; ++j)
+		{
+			if (pBoard->returnPosition(j, i)!=0)
+			{
+				std::cout <<"\n"<< pBoard->returnPosition(j, i)<< "Array filled with that \n" ;
+				rect2.changeXandYto(xInPixels(j), xInPixels(i));
+				std::cout << "\n" << j << "   " << xInPixels(j) << "   Rendered tile2 here   x  ";
+				std::cout << "\n" << i << "   " << xInPixels(i) << "   Rendered tile2 here  y   ";
+				rect2.draw();
+				system("PAUSE");
+			}
+		}
+		
+	}
+	
+	
+}
+
+void Game::getNextPiece()
+{
+	pPiece = pNextPiece;
+}
+
 void Game::Init() //Selects the new tetromino
 {
 	int a = RandNumber(), b;
@@ -75,21 +123,24 @@ void Game::Init() //Selects the new tetromino
 	} while (b == a);
 
 	NewTetro(b);
-	X = initialPositionX;
-	Y = initialPositionY;	
+	xOfThePieceInTheBoard = initialPositionX;
+	yOfThePieceInTheBoard = initialPositionY;	
 }
 
 
 
 int Game::xInPixels(int x)
 {
+	
 	int xPixels = x * tileHeightAndWidht + offSetBoard;
+	
 	return xPixels;
 }
 
 int Game::yInPixels(int y)
 {
-	int yPixels = y * tileHeightAndWidht+ offSetBoard;
+	int yPixels = (y-1) * tileHeightAndWidht+ offSetBoard;
+	
 	return yPixels;
 }
 

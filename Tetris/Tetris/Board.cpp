@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Board.h"
-
+#include <iostream>
 
 Board::Board()
 {
@@ -14,24 +14,16 @@ Board::~Board()
 
 void Board::Store( Tetromino* const tetro, unsigned short int x, unsigned short int y)
 {
-	int t = 0;//rows on the piece array
-
-	for (int i = x; i < x + TetroHAndW; ++i)
+	for (int i = 0; i < TetroHAndW; ++i)
 	{
-
-		int t2 = 0;//collumns on the piece array
-
-		for (int i2 = y; i2 < y + TetroHAndW; ++i2) // we move the other axis
+		for (int j = 0; j < TetroHAndW; ++j) // we move the other axis
 		{
-			if (tetro->getPiece(t, t2) == 1) //checks the position in the array of the piece
+			if (tetro->getPiece(i, j) !=0 ) //checks the position in the array of the piece
 			{
-				ArrayBoard[i][i2] = OC;
+				ArrayBoard[x+i-1][y+j-1] = OC;
+				std::cout<<"\n" << x+i-1 <<"   "<< y+j-1 << "    Here is where i stored the piece      ";
 			}
-			++t2;
 		}
-
-		++t;
-
 	}
 }
 
@@ -60,37 +52,41 @@ void Board::CheckAndDelete()
 
 }
 
-bool Board::Collision( Tetromino * const tetro, unsigned short int x, unsigned short int y)
+bool Board::CanThePieceMove( Tetromino * const tetro, unsigned short int x, unsigned short int y)
 {
-	int t = 0;//rows on the piece array
 
-	for (int i = x; i < x + TetroHAndW; ++i)
+
+	for (int i = 0; i <  TetroHAndW; ++i)//rows on the piece array
 	{
-		int t2 = 0;//collumns on the piece array
-
-		for (int i2 = y; i2 < y + TetroHAndW; ++i2) // we move the other axis
+		for (int j = 0; j < TetroHAndW; ++j) // we move the other axis, collumns on the piece array
 		{
 			/* Is the piece outside the limit*/
-			if (i < 0 ||
-				i > BoardWidht - 1 ||
-				i2 > BoardHeight - 1)
+
+			if ((i +x )< 0 || (i + x)> BoardWidht - 1 || (j+y) > BoardHeight - 1)
 			{
-				if (tetro->getPiece(t, t2) != 0)
+				if (tetro->getPiece(i, j) == 1)
+				{
 					return false;
+				}
 			}
 
-			if (i2 >= 0)
+			if (j >= 0) //collision with something stored
 			{
-				if ((tetro->getPiece(t, t2) != 0) && (CheckPosition(i, i2) != 0))
+				if ((tetro->getPiece(i, j) ==1 ) && (returnPosition(x+1, y+1) ==1  ))
+				{
 					return false;
+				}
 			}
-
-			++t2;
-		}
-		++t;
+		}		
 	}
 
 	return true;//There was no collision
+}
+
+int Board::returnPosition(int x, int y)
+{
+	
+	return ArrayBoard[x][y];
 }
 
 
@@ -98,25 +94,30 @@ bool Board::Collision( Tetromino * const tetro, unsigned short int x, unsigned s
 
 
 
-
-bool Board::CheckPosition(unsigned int x, unsigned  int y)
+bool Board::IsThisOC(unsigned int x, unsigned  int y)
 {
-	if (static_cast<vFill>(ArrayBoard[y][x]) == VACANT) return true;
-
-	else return false;
+	if (ArrayBoard[x][y] == VACANT)
+	{
+		return false;
+	}
+	if(ArrayBoard[x][y] == OC)
+	{
+		return true;
+	}
 }
 
 
 
 void Board::Initializate()
 {
-	for (size_t x = 0; x < BoardWidht; ++x)
+	for (int y = 0; y < BoardHeight; ++y)
 	{
-		for (size_t y = 0; y < BoardHeight; ++y)
+		for (int x = 0; x < BoardWidht; ++x)
 		{
-			ArrayBoard[x][y] == VACANT;
+			ArrayBoard[x][y] == 0;
+			
 		}
-
+		
 	}
 	
 }

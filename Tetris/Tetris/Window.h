@@ -6,6 +6,7 @@ class Window
 {
 public:
 	Window( int widht, int height, int windowPosX, int windowPosY);
+
 	~Window();
 	bool isClosed();
 	void event();

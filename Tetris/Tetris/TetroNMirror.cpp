@@ -13,7 +13,7 @@ TetroNMirror::~TetroNMirror()
 
 int TetroNMirror::getPiece(int pX, int pY)
 {
-	return (piece[static_cast<int>(actualRotation)][pY][pX]);
+	return (piece[static_cast<int>(actualRotation)][pX][pY]);
 }
 
 void TetroNMirror::rotateRight()
